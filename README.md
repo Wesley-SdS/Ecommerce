@@ -1,15 +1,15 @@
-Claro! Aqui está a documentação atualizada com quebras de linha adequadas para evitar scroll horizontal:
+Aqui está a documentação atualizada com a configuração do arquivo `.env` para o backend também:
 
 ```markdown
 # E-commerce Project
 
 ## Visão Geral
 
-Este projeto de e-commerce é uma aplicação web moderna, construída com uma arquitetura de frontend
- e backend separadas, utilizando **React** para o cliente e **Node.js** com **Express** para o servidor.
- O sistema é responsivo e utiliza **Tailwind CSS** para estilização, proporcionando uma experiência de
- usuário intuitiva e atraente. Este projeto demonstra as melhores práticas de desenvolvimento, incluindo
- separação de responsabilidades, utilização de APIs e integração com um banco de dados.
+Este projeto de e-commerce é uma aplicação web moderna, construída com uma arquitetura de frontend 
+e backend separadas, utilizando **React** para o cliente e **Node.js** com **Express** para o servidor. 
+O sistema é responsivo e utiliza **Tailwind CSS** para estilização, proporcionando uma experiência de 
+usuário intuitiva e atraente. Este projeto demonstra as melhores práticas de desenvolvimento, incluindo 
+separação de responsabilidades, utilização de APIs e integração com um banco de dados.
 
 ## Tecnologias Utilizadas
 
@@ -22,23 +22,22 @@ Este projeto de e-commerce é uma aplicação web moderna, construída com uma a
 ### Backend
 
 - **Node.js:** Ambiente de execução JavaScript para desenvolvimento do servidor.
-- **Express:** Framework web minimalista para Node.js, facilitando a criação de APIs
- e gerenciamento de rotas.
+- **Express:** Framework web minimalista para Node.js, facilitando a criação de APIs 
+e gerenciamento de rotas.
 
 ### Banco de Dados
 
-- **MongoDB / PostgreSQL (ou outro):** Banco de dados NoSQL ou relacional para
- armazenamento de dados de usuários, produtos e transações.
+- **MongoDB / Armazenamento de dados de usuários, produtos e transações.
 
 ## Funcionalidades
 
 - **Navegação de Produtos:** Usuários podem navegar por uma lista de produtos categorizados.
-- **Sistema de Cadastro e Login:** Implementação de autenticação de usuários com criptografia
- de senhas.
-- **Integração com Banco de Dados:** Persistência de dados utilizando um banco de dados para armazenar
- informações de produtos e usuários.
-- **Carrinho de Compras:** Permite que os usuários adicionem produtos e gerenciem suas
- compras antes do checkout.
+- **Sistema de Cadastro e Login:** Implementação de autenticação de usuários com criptografia 
+de senhas.
+- **Integração com Banco de Dados:** Persistência de dados utilizando um banco de dados para armazenar 
+informações de produtos e usuários.
+- **Carrinho de Compras:** Permite que os usuários adicionem produtos e gerenciem suas 
+compras antes do checkout.
 - **Pagamento Seguro:** Integração com gateways de pagamento para transações seguras.
 
 ## Instalação
@@ -51,6 +50,7 @@ Este projeto de e-commerce é uma aplicação web moderna, construída com uma a
 ### Clonar o Repositório
 
 Para clonar o repositório, execute os seguintes comandos no terminal:
+```
 
 ```bash
 git clone https://github.com/seunome/seurepositorio.git
@@ -77,6 +77,25 @@ cd backend
 yarn install
 ```
 
+### Configuração do .env
+
+#### Frontend:
+
+Crie um arquivo `.env` na pasta do frontend e adicione a seguinte configuração para o Cloudinary:
+
+```
+REACT_APP_CLOUD_NAME_CLOUDINARY=seu_nome_de_nuvem
+```
+
+#### Backend:
+
+Crie um arquivo `.env` na pasta do backend e adicione as seguintes configurações:
+
+```
+MONGODB_URI=mongodb+srv://seu_usuario:sua_senha@cluster.mongodb.net/nome_do_banco
+FRONTEND_URL=http://localhost:3000
+```
+
 ## Execução
 
 ### Para o Frontend:
@@ -94,7 +113,7 @@ Inicie o servidor do backend:
 
 ```bash
 cd backend
-yarn start
+yarn run dev
 ```
 
 ## Roadmap
@@ -104,4 +123,3 @@ yarn start
 - **Integração com APIs Externas:** Expandir as funcionalidades da aplicação através da integração com serviços de terceiros (ex: APIs de entrega, autenticação social).
 ```
 
-Agora, as quebras de linha devem evitar o scroll horizontal! Se precisar de mais ajustes, é só avisar.
