@@ -3,19 +3,28 @@ import { useTranslation } from "react-i18next";
 const useProductCategory = () => {
   const { t } = useTranslation();
 
-  return [
+  const categories = [
     {
       id: 1,
-      label: t("product_categories.protein_bars"),
+      label: t("admin.product_categories.protein_bars"),
       value: "Protein Bars"
     },
-    { id: 2, label: t("product_categories.combos"), value: "combos" },
-    { id: 3, label: t("product_categories.grains"), value: "grains" },
-    { id: 4, label: t("product_categories.flours"), value: "flours" },
-    { id: 5, label: t("product_categories.pasta"), value: "pasta" },
-    { id: 6, label: t("product_categories.feculas"), value: "feculas" },
-    { id: 7, label: t("product_categories.supplements"), value: "Suplementos" }
+    { id: 2, label: t("admin.product_categories.combos"), value: "Combos" },
+    { id: 3, label: t("admin.product_categories.grains"), value: "Grains" },
+    { id: 4, label: t("admin.product_categories.flours"), value: "Flours" },
+    { id: 5, label: t("admin.product_categories.pasta"), value: "Pasta" },
+    { id: 6, label: t("admin.product_categories.feculas"), value: "Feculas" },
+    {
+      id: 7,
+      label: t("admin.product_categories.supplements"),
+      value: "Supplements"
+    }
   ];
+
+  // Adicione este console.log para verificar a tradução
+  console.log("Categories:", categories);
+
+  return categories;
 };
 
 export default useProductCategory;

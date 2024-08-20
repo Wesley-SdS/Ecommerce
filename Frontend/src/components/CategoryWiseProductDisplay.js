@@ -6,7 +6,7 @@ import addToCart from "../helpers/addToCart";
 import Context from "../context";
 import scrollTop from "../helpers/scrollTop";
 
-const CategroyWiseProductDisplay = ({ category, heading }) => {
+const CategoryWiseProductDisplay = ({ category, heading }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const loadingList = new Array(13).fill(null);
@@ -14,22 +14,27 @@ const CategroyWiseProductDisplay = ({ category, heading }) => {
   const { fetchUserAddToCart } = useContext(Context);
 
   const handleAddToCart = async (e, id) => {
+    e.preventDefault(); // Prevent default behavior
     await addToCart(e, id);
     fetchUserAddToCart();
   };
 
   const fetchData = async () => {
-    setLoading(true);
-    const categoryProduct = await fetchCategoryWiseProduct(category);
-    setLoading(false);
-
-    console.log("horizontal data", categoryProduct.data);
-    setData(categoryProduct?.data);
+    try {
+      setLoading(true);
+      const categoryProduct = await fetchCategoryWiseProduct(category);
+      setData(categoryProduct?.data || []);
+    } catch (error) {
+      console.error("Error fetching category-wise products:", error);
+      setData([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [category]);
 
   return (
     <div className="container mx-auto px-4 my-6 relative">
@@ -40,7 +45,7 @@ const CategroyWiseProductDisplay = ({ category, heading }) => {
           ? loadingList.map((_, index) => (
               <div
                 key={index}
-                className="w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] bg-white rounded-sm shadow "
+                className="w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] bg-white rounded-sm shadow"
               >
                 <div className="bg-slate-200 h-48 p-4 min-w-[280px] md:min-w-[145px] flex justify-center items-center animate-pulse"></div>
                 <div className="p-4 grid gap-3">
@@ -57,7 +62,7 @@ const CategroyWiseProductDisplay = ({ category, heading }) => {
           : data.map((product) => (
               <Link
                 key={product._id}
-                to={"/product/" + product?._id}
+                to={`/product/${product._id}`}
                 className="w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] bg-white rounded-sm shadow"
                 onClick={scrollTop}
               >
@@ -70,22 +75,22 @@ const CategroyWiseProductDisplay = ({ category, heading }) => {
                 </div>
                 <div className="p-4 grid gap-3">
                   <h2 className="font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-black">
-                    {product?.productName}
+                    {product.productName}
                   </h2>
                   <p className="capitalize text-slate-500">
-                    {product?.category}
+                    {product.category}
                   </p>
                   <div className="flex gap-3">
                     <p className="text-red-600 font-medium">
-                      {displayINRCurrency(product?.sellingPrice)}
+                      {displayINRCurrency(product.sellingPrice)}
                     </p>
                     <p className="text-slate-500 line-through">
-                      {displayINRCurrency(product?.price)}
+                      {displayINRCurrency(product.price)}
                     </p>
                   </div>
                   <button
                     className="text-sm bg-red-600 hover:bg-red-700 text-white px-3 py-0.5 rounded-full"
-                    onClick={(e) => handleAddToCart(e, product?._id)}
+                    onClick={(e) => handleAddToCart(e, product._id)}
                   >
                     Add to Cart
                   </button>
@@ -97,4 +102,4 @@ const CategroyWiseProductDisplay = ({ category, heading }) => {
   );
 };
 
-export default CategroyWiseProductDisplay;
+export default CategoryWiseProductDisplay;

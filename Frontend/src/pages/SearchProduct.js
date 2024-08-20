@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import SummaryApi from "../common";
 import VerticalCard from "../components/VerticalCard";
 
 const SearchProduct = () => {
+  const { t } = useTranslation();
   const query = useLocation();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  console.log("query", query.search);
+  const resultsRef = useRef(null);
 
   const fetchProduct = async () => {
     setLoading(true);
@@ -17,6 +18,16 @@ const SearchProduct = () => {
     setLoading(false);
 
     setData(dataResponse.data);
+    scrollToResults();
+  };
+
+  const scrollToResults = () => {
+    if (resultsRef.current) {
+      window.scrollTo({
+        top: resultsRef.current.offsetTop - 150,
+        behavior: "smooth"
+      });
+    }
   };
 
   useEffect(() => {
@@ -25,14 +36,16 @@ const SearchProduct = () => {
 
   return (
     <div className="container mx-auto p-4">
-      {loading && <p className="text-lg text-center">Loading ...</p>}
+      {loading && <p className="text-lg text-center">{t("common.loading")}</p>}
 
-      <p className="text-lg font-semibold my-3">
-        Search Results : {data.length}
+      <p className="text-lg font-semibold my-3" ref={resultsRef}>
+        {t("common.search_results")} {data.length}
       </p>
 
       {data.length === 0 && !loading && (
-        <p className="bg-white text-lg text-center p-4">No Data Found....</p>
+        <p className="bg-white text-lg text-center p-4">
+          {t("common.no_data_found")}
+        </p>
       )}
 
       {data.length !== 0 && !loading && (

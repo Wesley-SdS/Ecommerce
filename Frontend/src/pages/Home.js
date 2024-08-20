@@ -4,40 +4,21 @@ import CategoryList from "../components/CategoryList";
 import BannerProduct from "../components/BannerProduct";
 import HorizontalCardProduct from "../components/HorizontalCardProduct";
 import VerticalCardProduct from "../components/VerticalCardProduct";
+import ProductList from "../components/ProductList";
 
 export const Home = () => {
   const { t } = useTranslation();
 
   return (
     <div>
-      <CategoryList />
-      <BannerProduct />
+      <p className="flex justify-center text-2xl font-bold">
+        Nossos Queridinhos
+      </p>
+      <div className="mx-4">
+        <VerticalCardProduct clas category={"pasta"} heading={t("")} />
+      </div>
 
-      <HorizontalCardProduct
-        category={"flours"}
-        heading={t("product_categories.flours")}
-      />
-      <HorizontalCardProduct
-        category={"combos"}
-        heading={t("product_categories.combos")}
-      />
-
-      <VerticalCardProduct
-        category={"flours"}
-        heading={t("product_categories.flours")}
-      />
-      <VerticalCardProduct
-        category={"combos"}
-        heading={t("product_categories.combos")}
-      />
-      <VerticalCardProduct
-        category={"grains"}
-        heading={t("product_categories.grains")}
-      />
-      <VerticalCardProduct
-        category={"pasta"}
-        heading={t("product_categories.pasta")}
-      />
+      <ProductList />
     </div>
   );
 };

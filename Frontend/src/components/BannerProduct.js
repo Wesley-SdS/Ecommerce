@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
-import banner1 from "../assets/banner/banner1.png";
-import banner2 from "../assets/banner/banner2.png";
-import banner3 from "../assets/banner/banner3.png";
-import banner4 from "../assets/banner/banner4.png";
-import banner5 from "../assets/banner/banner5.png";
+import banner1 from "../assets/banner/1.png";
+import banner2 from "../assets/banner/2.png";
+import banner3 from "../assets/banner/3.png";
+import banner4 from "../assets/banner/4.png";
+import banner5 from "../assets/banner/5.png";
+import banner6 from "../assets/banner/6.png";
+import banner7 from "../assets/banner/7.png";
+import banner8 from "../assets/banner/8.png";
+import banner9 from "../assets/banner/9.png";
 
 import { FaAngleRight } from "react-icons/fa6";
 import { FaAngleLeft } from "react-icons/fa6";
@@ -11,14 +15,28 @@ import { FaAngleLeft } from "react-icons/fa6";
 const BannerProduct = () => {
   const [currentImage, setCurrentImage] = useState(0);
 
-  const desktopImages = [banner1, banner2, banner3, banner4, banner5];
+  const desktopImages = [
+    banner1,
+    banner2,
+    banner3,
+    banner4,
+    banner5,
+    banner6,
+    banner7,
+    banner8,
+    banner9
+  ];
 
   const mobileImages = [
     banner1.png,
     banner2.png,
     banner3.png,
     banner4.png,
-    banner5.png
+    banner5.png,
+    banner6.png,
+    banner7.png,
+    banner8.png,
+    banner9.png
   ];
 
   const nextImage = () => {
